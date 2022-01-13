@@ -16,23 +16,23 @@ provider "azurerm" {
 }
 
 data "azurerm_resource_group" "rg1" {
-  provider = "azurerm.sub1"
+  provider = azurerm.sub1
   name     = var.resource_group_names[0]
 }
 
 data "azurerm_resource_group" "rg2" {
-  provider = "azurerm.sub2"
+  provider = azurerm.sub2
   name     = var.resource_group_names[1]
 }
 
 data "azurerm_virtual_network" "vnet1" {
-  provider            = "azurerm.sub1"
+  provider            = azurerm.sub1
   name                = var.vnet_names[0]
   resource_group_name = data.azurerm_resource_group.rg1.name
 }
 
 data "azurerm_virtual_network" "vnet2" {
-  provider            = "azurerm.sub2"
+  provider            = azurerm.sub2
   name                = var.vnet_names[1]
   resource_group_name = data.azurerm_resource_group.rg2.name
 }
